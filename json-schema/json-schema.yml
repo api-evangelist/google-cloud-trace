@@ -1,0 +1,106 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-trace/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud Trace Schema
+description: Schema defining the core resources of the Google Cloud Trace API.
+type: object
+properties:
+  span:
+    $ref: '#/$defs/Span'
+  trace:
+    $ref: '#/$defs/Trace'
+$defs:
+  Span:
+    type: object
+    title: Span
+    description: A span represents a single timed operation within a trace.
+    properties:
+      name:
+        type: string
+        description: >-
+          The resource name of the span in the format
+          projects/{projectId}/traces/{traceId}/spans/{spanId}.
+      spanId:
+        type: string
+        description: The unique span identifier within the trace.
+      parentSpanId:
+        type: string
+        description: The span ID of the parent span, if any.
+      displayName:
+        type: object
+        properties:
+          value:
+            type: string
+          truncatedByteCount:
+            type: integer
+      startTime:
+        type: string
+        format: date-time
+        description: The start time of the span.
+      endTime:
+        type: string
+        format: date-time
+        description: The end time of the span.
+      attributes:
+        type: object
+        description: Key-value attributes associated with the span.
+        properties:
+          attributeMap:
+            type: object
+            additionalProperties:
+              type: object
+      status:
+        type: object
+        description: The status of the span.
+        properties:
+          code:
+            type: integer
+          message:
+            type: string
+      sameProcessAsParentSpan:
+        type: boolean
+        description: Whether the span is in the same process as its parent.
+      childSpanCount:
+        type: integer
+        description: The number of child spans.
+    required:
+      - name
+      - spanId
+      - displayName
+      - startTime
+      - endTime
+  Trace:
+    type: object
+    title: Trace
+    description: A trace describes the latency of a request as it propagates through a system.
+    properties:
+      projectId:
+        type: string
+        description: The project ID associated with the trace.
+      traceId:
+        type: string
+        description: The globally unique trace identifier.
+      spans:
+        type: array
+        description: The collection of spans in the trace.
+        items:
+          type: object
+          properties:
+            spanId:
+              type: string
+            name:
+              type: string
+            startTime:
+              type: string
+              format: date-time
+            endTime:
+              type: string
+              format: date-time
+            parentSpanId:
+              type: string
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+    required:
+      - projectId
+      - traceId

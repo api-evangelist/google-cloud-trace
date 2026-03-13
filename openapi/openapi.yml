@@ -1,0 +1,267 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Trace API
+  description: >-
+    The Cloud Trace API enables sending and retrieving latency data for
+    distributed applications. It supports writing trace spans, batch writing
+    traces, listing traces, and retrieving individual traces to analyze
+    request latency across microservices.
+  version: v2
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/trace
+externalDocs:
+  description: Google Cloud Trace Documentation
+  url: https://cloud.google.com/trace/docs
+servers:
+  - url: https://cloudtrace.googleapis.com
+paths:
+  /v2/projects/{projectId}/traces:batchWrite:
+    post:
+      operationId: batchWriteSpans
+      summary: Batch Write Spans
+      description: >-
+        Sends new spans to the specified project. This is the recommended
+        method for production to efficiently write trace data.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchWriteSpansRequest'
+      responses:
+        '200':
+          description: Successful response
+  /v2/projects/{projectId}/traces/{traceId}/spans:
+    post:
+      operationId: createSpan
+      summary: Create Span
+      description: >-
+        Creates a new span. Useful for development and testing but batchWrite
+        is preferred for production.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: traceId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Span'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Span'
+  /v1/projects/{projectId}/traces:
+    get:
+      operationId: listTraces
+      summary: List Traces
+      description: Lists traces that match the specified filter conditions.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+          description: Optional filter for the traces.
+        - name: startTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: endTime
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTracesResponse'
+    patch:
+      operationId: patchTraces
+      summary: Patch Traces
+      description: Sends new traces or updates existing traces.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Traces'
+      responses:
+        '200':
+          description: Successful response
+  /v1/projects/{projectId}/traces/{traceId}:
+    get:
+      operationId: getTrace
+      summary: Get Trace
+      description: Gets a single trace by its ID.
+      parameters:
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: traceId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trace'
+components:
+  schemas:
+    Span:
+      type: object
+      description: A span represents a single operation within a trace.
+      properties:
+        name:
+          type: string
+          description: >-
+            The resource name of the span in the format
+            projects/{projectId}/traces/{traceId}/spans/{spanId}.
+        spanId:
+          type: string
+          description: The span ID within the trace.
+        parentSpanId:
+          type: string
+          description: The span ID of the parent span.
+        displayName:
+          type: object
+          properties:
+            value:
+              type: string
+            truncatedByteCount:
+              type: integer
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        attributes:
+          type: object
+          properties:
+            attributeMap:
+              type: object
+              additionalProperties:
+                type: object
+        status:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+        links:
+          type: object
+          properties:
+            link:
+              type: array
+              items:
+                type: object
+        stackTrace:
+          type: object
+        timeEvents:
+          type: object
+        sameProcessAsParentSpan:
+          type: boolean
+        childSpanCount:
+          type: integer
+    Trace:
+      type: object
+      description: A trace describes the latency of a request through a system.
+      properties:
+        projectId:
+          type: string
+        traceId:
+          type: string
+        spans:
+          type: array
+          items:
+            type: object
+            properties:
+              spanId:
+                type: string
+              name:
+                type: string
+              startTime:
+                type: string
+                format: date-time
+              endTime:
+                type: string
+                format: date-time
+              parentSpanId:
+                type: string
+              labels:
+                type: object
+                additionalProperties:
+                  type: string
+    Traces:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+    BatchWriteSpansRequest:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Span'
+      required:
+        - spans
+    ListTracesResponse:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+        nextPageToken:
+          type: string

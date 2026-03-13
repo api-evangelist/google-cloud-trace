@@ -1,0 +1,23 @@
+"@context":
+  "@vocab": https://schema.org/
+  gcloud: https://cloud.google.com/trace/docs/reference/v2/rest/
+  name: schema:name
+  description: schema:description
+  url: schema:url
+  Span:
+    "@id": gcloud:projects.traces.spans
+    "@type": schema:Action
+    spanId: schema:identifier
+    parentSpanId: schema:isPartOf
+    displayName: schema:name
+    startTime: schema:startTime
+    endTime: schema:endTime
+    attributes: schema:additionalProperty
+    status: schema:actionStatus
+    childSpanCount: schema:numberOfItems
+  Trace:
+    "@id": gcloud:projects.traces
+    "@type": schema:Dataset
+    projectId: schema:identifier
+    traceId: schema:identifier
+    spans: schema:hasPart
