@@ -13,13 +13,13 @@ modified: '2026-03-16'
 specificationVersion: '0.19'
 type: Index
 tags:
-  - Tracing
   - Distributed Tracing
+  - Google Cloud
   - Latency
+  - Observability
   - Performance
   - Spans
-  - Observability
-  - Google Cloud
+  - Tracing
 apis:
   - name: Google Cloud Trace API
     description: >-

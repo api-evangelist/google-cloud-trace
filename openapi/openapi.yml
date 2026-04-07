@@ -38,6 +38,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - Projects
   /v2/projects/{projectId}/traces/{traceId}/spans:
     post:
       operationId: createSpan
@@ -69,6 +71,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Span'
+      tags:
+        - Projects
   /v1/projects/{projectId}/traces:
     get:
       operationId: listTraces
@@ -110,6 +114,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTracesResponse'
+      tags:
+        - Projects
     patch:
       operationId: patchTraces
       summary: Google Cloud Trace Patch Traces
@@ -129,6 +135,8 @@ paths:
       responses:
         '200':
           description: Successful response
+      tags:
+        - Projects
   /v1/projects/{projectId}/traces/{traceId}:
     get:
       operationId: getTrace
@@ -152,6 +160,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Trace'
+      tags:
+        - Projects
 components:
   schemas:
     Span:
@@ -265,3 +275,5 @@ components:
             $ref: '#/components/schemas/Trace'
         nextPageToken:
           type: string
+tags:
+  - name: Projects
