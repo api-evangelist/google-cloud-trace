@@ -1,0 +1,310 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Trace API
+  description: The Cloud Trace API enables sending and retrieving latency data for distributed applications. It supports writing
+    trace spans, batch writing traces, listing traces, and retrieving individual traces to analyze request latency across
+    microservices.
+  tags:
+  - Google
+  - Cloud
+  - Trace
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-trace
+    baseUri: https://cloudtrace.googleapis.com
+    description: Google Cloud Trace API HTTP API.
+    resources:
+    - name: v2-projects-projectid-traces-batchwrite
+      path: /v2/projects/{projectId}/traces:batchWrite
+      operations:
+      - name: batchwritespans
+        method: POST
+        description: Google Cloud Trace Batch Write Spans
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-projects-projectid-traces-traceid-spans
+      path: /v2/projects/{projectId}/traces/{traceId}/spans
+      operations:
+      - name: createspan
+        method: POST
+        description: Google Cloud Trace Create Span
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: traceId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-projects-projectid-traces
+      path: /v1/projects/{projectId}/traces
+      operations:
+      - name: listtraces
+        method: GET
+        description: Google Cloud Trace List Traces
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: filter
+          in: query
+          type: string
+          description: Optional filter for the traces.
+        - name: startTime
+          in: query
+          type: string
+        - name: endTime
+          in: query
+          type: string
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: patchtraces
+        method: PATCH
+        description: Google Cloud Trace Patch Traces
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-projects-projectid-traces-traceid
+      path: /v1/projects/{projectId}/traces/{traceId}
+      operations:
+      - name: gettrace
+        method: GET
+        description: Google Cloud Trace Get Trace
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: traceId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-cloud-trace-rest
+    description: REST adapter for Google Cloud Trace API.
+    resources:
+    - path: /v2/projects/{projectId}/traces:batchWrite
+      name: batchwritespans
+      operations:
+      - method: POST
+        name: batchwritespans
+        description: Google Cloud Trace Batch Write Spans
+        call: google-cloud-trace.batchwritespans
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v2/projects/{projectId}/traces/{traceId}/spans
+      name: createspan
+      operations:
+      - method: POST
+        name: createspan
+        description: Google Cloud Trace Create Span
+        call: google-cloud-trace.createspan
+        with:
+          projectId: rest.projectId
+          traceId: rest.traceId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectId}/traces
+      name: listtraces
+      operations:
+      - method: GET
+        name: listtraces
+        description: Google Cloud Trace List Traces
+        call: google-cloud-trace.listtraces
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectId}/traces
+      name: patchtraces
+      operations:
+      - method: PATCH
+        name: patchtraces
+        description: Google Cloud Trace Patch Traces
+        call: google-cloud-trace.patchtraces
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectId}/traces/{traceId}
+      name: gettrace
+      operations:
+      - method: GET
+        name: gettrace
+        description: Google Cloud Trace Get Trace
+        call: google-cloud-trace.gettrace
+        with:
+          projectId: rest.projectId
+          traceId: rest.traceId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-cloud-trace-mcp
+    transport: http
+    description: MCP adapter for Google Cloud Trace API for AI agent use.
+    tools:
+    - name: batchwritespans
+      description: Google Cloud Trace Batch Write Spans
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-trace.batchwritespans
+      with:
+        projectId: tools.projectId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createspan
+      description: Google Cloud Trace Create Span
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-trace.createspan
+      with:
+        projectId: tools.projectId
+        traceId: tools.traceId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: traceId
+        type: string
+        description: traceId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtraces
+      description: Google Cloud Trace List Traces
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-trace.listtraces
+      with:
+        projectId: tools.projectId
+        filter: tools.filter
+        startTime: tools.startTime
+        endTime: tools.endTime
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: filter
+        type: string
+        description: Optional filter for the traces.
+      - name: startTime
+        type: string
+        description: startTime
+      - name: endTime
+        type: string
+        description: endTime
+      - name: pageSize
+        type: integer
+        description: pageSize
+      - name: pageToken
+        type: string
+        description: pageToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patchtraces
+      description: Google Cloud Trace Patch Traces
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-trace.patchtraces
+      with:
+        projectId: tools.projectId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettrace
+      description: Google Cloud Trace Get Trace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-trace.gettrace
+      with:
+        projectId: tools.projectId
+        traceId: tools.traceId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: traceId
+        type: string
+        description: traceId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
