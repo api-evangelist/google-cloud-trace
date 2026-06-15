@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Trace API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Trace Batch Write Spans",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudtrace.googleapis.com/v2/projects/:projectId/traces:batchWrite",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends new spans to the specified project. This is the recommended method for production to efficiently write trace data."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Trace Create Span",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://cloudtrace.googleapis.com/v2/projects/:projectId/traces/:traceId/spans",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "traceId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new span. Useful for development and testing but batchWrite is preferred for production."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Trace List Traces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudtrace.googleapis.com/v1/projects/:projectId/traces",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Optional filter for the traces."
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists traces that match the specified filter conditions."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Trace Patch Traces",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://cloudtrace.googleapis.com/v1/projects/:projectId/traces",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends new traces or updates existing traces."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Trace Get Trace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://cloudtrace.googleapis.com/v1/projects/:projectId/traces/:traceId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "traceId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a single trace by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
