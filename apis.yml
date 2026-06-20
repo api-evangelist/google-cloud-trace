@@ -4,7 +4,7 @@ description: >-
   Google Cloud Trace is a distributed tracing system that collects latency data from applications and displays it in
   near real-time. It helps developers understand how requests propagate through their application, identify performance
   bottlenecks, and analyze latency across microservices and distributed architectures running on Google Cloud.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-trace/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
