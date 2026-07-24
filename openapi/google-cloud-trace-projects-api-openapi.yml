@@ -1,34 +1,27 @@
 openapi: 3.1.0
 info:
-  title: Google Cloud Trace API
-  description: >-
-    The Cloud Trace API enables sending and retrieving latency data for
-    distributed applications. It supports writing trace spans, batch writing
-    traces, listing traces, and retrieving individual traces to analyze
-    request latency across microservices.
+  title: Google Cloud Trace Projects API
+  description: The Cloud Trace API enables sending and retrieving latency data for distributed applications. It supports writing trace spans, batch writing traces, listing traces, and retrieving individual traces to analyze request latency across microservices.
   version: v2
   contact:
     name: Google Cloud
     url: https://cloud.google.com/trace
-externalDocs:
-  description: Google Cloud Trace Documentation
-  url: https://cloud.google.com/trace/docs
 servers:
-  - url: https://cloudtrace.googleapis.com
+- url: https://cloudtrace.googleapis.com
+tags:
+- name: Projects
 paths:
   /v2/projects/{projectId}/traces:batchWrite:
     post:
       operationId: batchWriteSpans
       summary: Google Cloud Trace Batch Write Spans
-      description: >-
-        Sends new spans to the specified project. This is the recommended
-        method for production to efficiently write trace data.
+      description: Sends new spans to the specified project. This is the recommended method for production to efficiently write trace data.
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -39,25 +32,23 @@ paths:
         '200':
           description: Successful response
       tags:
-        - Projects
+      - Projects
   /v2/projects/{projectId}/traces/{traceId}/spans:
     post:
       operationId: createSpan
       summary: Google Cloud Trace Create Span
-      description: >-
-        Creates a new span. Useful for development and testing but batchWrite
-        is preferred for production.
+      description: Creates a new span. Useful for development and testing but batchWrite is preferred for production.
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: traceId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: traceId
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -72,41 +63,41 @@ paths:
               schema:
                 $ref: '#/components/schemas/Span'
       tags:
-        - Projects
+      - Projects
   /v1/projects/{projectId}/traces:
     get:
       operationId: listTraces
       summary: Google Cloud Trace List Traces
       description: Lists traces that match the specified filter conditions.
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: filter
-          in: query
-          schema:
-            type: string
-          description: Optional filter for the traces.
-        - name: startTime
-          in: query
-          schema:
-            type: string
-            format: date-time
-        - name: endTime
-          in: query
-          schema:
-            type: string
-            format: date-time
-        - name: pageSize
-          in: query
-          schema:
-            type: integer
-        - name: pageToken
-          in: query
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+        description: Optional filter for the traces.
+      - name: startTime
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: endTime
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -115,17 +106,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/ListTracesResponse'
       tags:
-        - Projects
+      - Projects
     patch:
       operationId: patchTraces
       summary: Google Cloud Trace Patch Traces
       description: Sends new traces or updates existing traces.
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -136,23 +127,23 @@ paths:
         '200':
           description: Successful response
       tags:
-        - Projects
+      - Projects
   /v1/projects/{projectId}/traces/{traceId}:
     get:
       operationId: getTrace
       summary: Google Cloud Trace Get Trace
       description: Gets a single trace by its ID.
       parameters:
-        - name: projectId
-          in: path
-          required: true
-          schema:
-            type: string
-        - name: traceId
-          in: path
-          required: true
-          schema:
-            type: string
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: traceId
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
           description: Successful response
@@ -161,18 +152,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Trace'
       tags:
-        - Projects
+      - Projects
 components:
   schemas:
+    BatchWriteSpansRequest:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Span'
+      required:
+      - spans
     Span:
       type: object
       description: A span represents a single operation within a trace.
       properties:
         name:
           type: string
-          description: >-
-            The resource name of the span in the format
-            projects/{projectId}/traces/{traceId}/spans/{spanId}.
+          description: The resource name of the span in the format projects/{projectId}/traces/{traceId}/spans/{spanId}.
         spanId:
           type: string
           description: The span ID within the trace.
@@ -221,6 +219,22 @@ components:
           type: boolean
         childSpanCount:
           type: integer
+    ListTracesResponse:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+        nextPageToken:
+          type: string
+    Traces:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
     Trace:
       type: object
       description: A trace describes the latency of a request through a system.
@@ -250,30 +264,6 @@ components:
                 type: object
                 additionalProperties:
                   type: string
-    Traces:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
-    BatchWriteSpansRequest:
-      type: object
-      properties:
-        spans:
-          type: array
-          items:
-            $ref: '#/components/schemas/Span'
-      required:
-        - spans
-    ListTracesResponse:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
-        nextPageToken:
-          type: string
-tags:
-  - name: Projects
+externalDocs:
+  description: Google Cloud Trace Documentation
+  url: https://cloud.google.com/trace/docs
