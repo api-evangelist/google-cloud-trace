@@ -1,0 +1,14 @@
+{
+  "provider": "google-cloud-trace",
+  "sources": [
+    "google-cloud-trace-projects-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-trace-projects-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
