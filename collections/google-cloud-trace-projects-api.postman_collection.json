@@ -1,0 +1,617 @@
+{
+  "item": [
+    {
+      "id": "332a87c8-5ad5-4b31-acd3-1a5f9194150f",
+      "name": "Projects",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc8618f9-bcd1-432a-b44c-44a2fc5b1c0b",
+          "name": "Google Cloud Trace Batch Write Spans",
+          "request": {
+            "name": "Google Cloud Trace Batch Write Spans",
+            "description": {
+              "content": "Sends new spans to the specified project. This is the recommended method for production to efficiently write trace data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "projects",
+                ":projectId",
+                "traces:batchWrite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"spans\": [\n    {\n      \"name\": \"<string>\",\n      \"spanId\": \"<string>\",\n      \"parentSpanId\": \"<string>\",\n      \"displayName\": {\n        \"value\": \"<string>\",\n        \"truncatedByteCount\": \"<integer>\"\n      },\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"attributes\": {\n        \"attributeMap\": {\n          \"key_0\": \"<object>\"\n        }\n      },\n      \"status\": {\n        \"code\": \"<integer>\",\n        \"message\": \"<string>\"\n      },\n      \"links\": {\n        \"link\": [\n          \"<object>\",\n          \"<object>\"\n        ]\n      },\n      \"stackTrace\": \"<object>\",\n      \"timeEvents\": \"<object>\",\n      \"sameProcessAsParentSpan\": \"<boolean>\",\n      \"childSpanCount\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"spanId\": \"<string>\",\n      \"parentSpanId\": \"<string>\",\n      \"displayName\": {\n        \"value\": \"<string>\",\n        \"truncatedByteCount\": \"<integer>\"\n      },\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"attributes\": {\n        \"attributeMap\": {\n          \"key_0\": \"<object>\"\n        }\n      },\n      \"status\": {\n        \"code\": \"<integer>\",\n        \"message\": \"<string>\"\n      },\n      \"links\": {\n        \"link\": [\n          \"<object>\",\n          \"<object>\"\n        ]\n      },\n      \"stackTrace\": \"<object>\",\n      \"timeEvents\": \"<object>\",\n      \"sameProcessAsParentSpan\": \"<boolean>\",\n      \"childSpanCount\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3fe9b05-b6bf-406b-8718-8bec999163e6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "projects",
+                    ":projectId",
+                    "traces:batchWrite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spans\": [\n    {\n      \"name\": \"string\",\n      \"spanId\": \"string\",\n      \"parentSpanId\": \"string\",\n      \"displayName\": {\n        \"value\": \"string\",\n        \"truncatedByteCount\": 9131\n      },\n      \"startTime\": \"2016-06-01T12:54:34.848Z\",\n      \"endTime\": \"1985-11-03T22:01:51.292Z\",\n      \"attributes\": {\n        \"attributeMap\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"status\": {\n        \"code\": 6985,\n        \"message\": \"string\"\n      },\n      \"links\": {},\n      \"stackTrace\": {},\n      \"timeEvents\": {},\n      \"sameProcessAsParentSpan\": false,\n      \"childSpanCount\": 5920\n    },\n    {\n      \"name\": \"string\",\n      \"spanId\": \"string\",\n      \"parentSpanId\": \"string\",\n      \"displayName\": {\n        \"value\": \"string\",\n        \"truncatedByteCount\": 3824\n      },\n      \"startTime\": \"1948-07-01T00:39:06.266Z\",\n      \"endTime\": \"2008-05-26T07:59:35.772Z\",\n      \"attributes\": {\n        \"attributeMap\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      },\n      \"status\": {\n        \"code\": 1290,\n        \"message\": \"string\"\n      },\n      \"links\": {},\n      \"stackTrace\": {},\n      \"timeEvents\": {},\n      \"sameProcessAsParentSpan\": true,\n      \"childSpanCount\": 2409\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6db80253-f241-4071-bebf-d08a835e2d59",
+          "name": "Google Cloud Trace Create Span",
+          "request": {
+            "name": "Google Cloud Trace Create Span",
+            "description": {
+              "content": "Creates a new span. Useful for development and testing but batchWrite is preferred for production.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "projects",
+                ":projectId",
+                "traces",
+                ":traceId",
+                "spans"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "traceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"spanId\": \"<string>\",\n  \"parentSpanId\": \"<string>\",\n  \"displayName\": {\n    \"value\": \"<string>\",\n    \"truncatedByteCount\": \"<integer>\"\n  },\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"attributes\": {\n    \"attributeMap\": {\n      \"key_0\": \"<object>\",\n      \"key_1\": \"<object>\"\n    }\n  },\n  \"status\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  },\n  \"links\": {\n    \"link\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  },\n  \"stackTrace\": \"<object>\",\n  \"timeEvents\": \"<object>\",\n  \"sameProcessAsParentSpan\": \"<boolean>\",\n  \"childSpanCount\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5a8b1b4-3723-474c-9794-a9007279a949",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "projects",
+                    ":projectId",
+                    "traces",
+                    ":traceId",
+                    "spans"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "traceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"spanId\": \"<string>\",\n  \"parentSpanId\": \"<string>\",\n  \"displayName\": {\n    \"value\": \"<string>\",\n    \"truncatedByteCount\": \"<integer>\"\n  },\n  \"startTime\": \"<dateTime>\",\n  \"endTime\": \"<dateTime>\",\n  \"attributes\": {\n    \"attributeMap\": {\n      \"key_0\": \"<object>\"\n    }\n  },\n  \"status\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\"\n  },\n  \"links\": {\n    \"link\": [\n      \"<object>\",\n      \"<object>\"\n    ]\n  },\n  \"stackTrace\": \"<object>\",\n  \"timeEvents\": \"<object>\",\n  \"sameProcessAsParentSpan\": \"<boolean>\",\n  \"childSpanCount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"spanId\": \"string\",\n  \"parentSpanId\": \"string\",\n  \"displayName\": {\n    \"value\": \"string\",\n    \"truncatedByteCount\": 2898\n  },\n  \"startTime\": \"1955-10-27T22:42:06.677Z\",\n  \"endTime\": \"1949-06-26T14:18:39.770Z\",\n  \"attributes\": {\n    \"attributeMap\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  },\n  \"status\": {\n    \"code\": 9645,\n    \"message\": \"string\"\n  },\n  \"links\": {},\n  \"stackTrace\": {},\n  \"timeEvents\": {},\n  \"sameProcessAsParentSpan\": false,\n  \"childSpanCount\": 1118\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d4c78ff-44d8-46c5-aaaa-c96fe9897195",
+          "name": "Google Cloud Trace List Traces",
+          "request": {
+            "name": "Google Cloud Trace List Traces",
+            "description": {
+              "content": "Lists traces that match the specified filter conditions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "projects",
+                ":projectId",
+                "traces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Optional filter for the traces."
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce9b6b45-c594-4799-8661-e5293d57ee27",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"traces\": [\n    {\n      \"projectId\": \"string\",\n      \"traceId\": \"string\",\n      \"spans\": [\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"2002-04-16T01:32:44.373Z\",\n          \"endTime\": \"1956-05-26T00:05:10.795Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          }\n        },\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1946-11-02T00:44:16.104Z\",\n          \"endTime\": \"1991-01-17T09:44:28.391Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"projectId\": \"string\",\n      \"traceId\": \"string\",\n      \"spans\": [\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1955-06-14T17:55:25.333Z\",\n          \"endTime\": \"1977-06-23T02:45:34.651Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1981-01-18T09:59:07.685Z\",\n          \"endTime\": \"2021-06-14T14:11:35.178Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          }\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f63ef5bd-2a52-4de2-8f9a-3687d405a012",
+          "name": "Google Cloud Trace Patch Traces",
+          "request": {
+            "name": "Google Cloud Trace Patch Traces",
+            "description": {
+              "content": "Sends new traces or updates existing traces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "projects",
+                ":projectId",
+                "traces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"traces\": [\n    {\n      \"projectId\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"spans\": [\n        {\n          \"spanId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"parentSpanId\": \"<string>\",\n          \"labels\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        },\n        {\n          \"spanId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"parentSpanId\": \"<string>\",\n          \"labels\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      ]\n    },\n    {\n      \"projectId\": \"<string>\",\n      \"traceId\": \"<string>\",\n      \"spans\": [\n        {\n          \"spanId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"parentSpanId\": \"<string>\",\n          \"labels\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        {\n          \"spanId\": \"<string>\",\n          \"name\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"parentSpanId\": \"<string>\",\n          \"labels\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00111a1c-e2c9-407b-ad18-01c3631feb9e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId",
+                    "traces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"traces\": [\n    {\n      \"projectId\": \"string\",\n      \"traceId\": \"string\",\n      \"spans\": [\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1991-08-10T22:43:40.536Z\",\n          \"endTime\": \"1951-07-29T08:41:02.240Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\"\n          }\n        },\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1960-01-08T01:45:26.731Z\",\n          \"endTime\": \"2006-12-11T16:47:37.526Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"projectId\": \"string\",\n      \"traceId\": \"string\",\n      \"spans\": [\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1964-10-19T14:15:01.998Z\",\n          \"endTime\": \"2010-03-08T13:33:11.433Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        {\n          \"spanId\": \"string\",\n          \"name\": \"string\",\n          \"startTime\": \"1994-06-06T05:56:27.880Z\",\n          \"endTime\": \"1979-05-12T19:11:37.911Z\",\n          \"parentSpanId\": \"string\",\n          \"labels\": {\n            \"key_0\": \"string\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dff3811-0801-4ebf-8fb8-74c86e674995",
+          "name": "Google Cloud Trace Get Trace",
+          "request": {
+            "name": "Google Cloud Trace Get Trace",
+            "description": {
+              "content": "Gets a single trace by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "projects",
+                ":projectId",
+                "traces",
+                ":traceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "traceId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "655bb8da-fbf7-4983-8060-5d2da953afa3",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "projects",
+                    ":projectId",
+                    "traces",
+                    ":traceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "traceId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"projectId\": \"string\",\n  \"traceId\": \"string\",\n  \"spans\": [\n    {\n      \"spanId\": \"string\",\n      \"name\": \"string\",\n      \"startTime\": \"2001-04-24T19:53:32.173Z\",\n      \"endTime\": \"2000-06-13T16:47:27.868Z\",\n      \"parentSpanId\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"spanId\": \"string\",\n      \"name\": \"string\",\n      \"startTime\": \"1961-07-11T19:16:23.097Z\",\n      \"endTime\": \"1984-04-19T01:38:50.629Z\",\n      \"parentSpanId\": \"string\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://cloudtrace.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d7f5e31f-6587-4b20-9eca-546a9e5c2fa4",
+    "name": "Google Cloud Trace Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Cloud Trace API enables sending and retrieving latency data for distributed applications. It supports writing trace spans, batch writing traces, listing traces, and retrieving individual traces to analyze request latency across microservices.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}
