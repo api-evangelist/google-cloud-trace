@@ -37,6 +37,8 @@ apis:
   humanURL: https://cloud.google.com/trace/docs
   baseURL: https://cloudtrace.googleapis.com
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
