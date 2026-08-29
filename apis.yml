@@ -4,6 +4,18 @@ description: >-
   Google Cloud Trace is a distributed tracing system that collects latency data from applications and displays it in
   near real-time. It helps developers understand how requests propagate through their application, identify performance
   bottlenecks, and analyze latency across microservices and distributed architectures running on Google Cloud.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
