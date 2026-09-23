@@ -184,6 +184,24 @@ components:
                 type: object
                 additionalProperties:
                   type: string
+    ListTracesResponse:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+        nextPageToken:
+          type: string
+    BatchWriteSpansRequest:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Span'
+      required:
+      - spans
     Traces:
       type: object
       properties:
@@ -246,24 +264,6 @@ components:
           type: boolean
         childSpanCount:
           type: integer
-    BatchWriteSpansRequest:
-      type: object
-      properties:
-        spans:
-          type: array
-          items:
-            $ref: '#/components/schemas/Span'
-      required:
-      - spans
-    ListTracesResponse:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
-        nextPageToken:
-          type: string
 externalDocs:
   description: Google Cloud Trace Documentation
   url: https://cloud.google.com/trace/docs
