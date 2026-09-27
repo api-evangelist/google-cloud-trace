@@ -155,44 +155,6 @@ paths:
       - Projects
 components:
   schemas:
-    Trace:
-      type: object
-      description: A trace describes the latency of a request through a system.
-      properties:
-        projectId:
-          type: string
-        traceId:
-          type: string
-        spans:
-          type: array
-          items:
-            type: object
-            properties:
-              spanId:
-                type: string
-              name:
-                type: string
-              startTime:
-                type: string
-                format: date-time
-              endTime:
-                type: string
-                format: date-time
-              parentSpanId:
-                type: string
-              labels:
-                type: object
-                additionalProperties:
-                  type: string
-    ListTracesResponse:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
-        nextPageToken:
-          type: string
     BatchWriteSpansRequest:
       type: object
       properties:
@@ -202,13 +164,6 @@ components:
             $ref: '#/components/schemas/Span'
       required:
       - spans
-    Traces:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
     Span:
       type: object
       description: A span represents a single operation within a trace.
@@ -264,6 +219,51 @@ components:
           type: boolean
         childSpanCount:
           type: integer
+    Trace:
+      type: object
+      description: A trace describes the latency of a request through a system.
+      properties:
+        projectId:
+          type: string
+        traceId:
+          type: string
+        spans:
+          type: array
+          items:
+            type: object
+            properties:
+              spanId:
+                type: string
+              name:
+                type: string
+              startTime:
+                type: string
+                format: date-time
+              endTime:
+                type: string
+                format: date-time
+              parentSpanId:
+                type: string
+              labels:
+                type: object
+                additionalProperties:
+                  type: string
+    Traces:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+    ListTracesResponse:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+        nextPageToken:
+          type: string
 externalDocs:
   description: Google Cloud Trace Documentation
   url: https://cloud.google.com/trace/docs
