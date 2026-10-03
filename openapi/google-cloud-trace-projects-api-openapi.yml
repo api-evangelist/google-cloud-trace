@@ -155,15 +155,15 @@ paths:
       - Projects
 components:
   schemas:
-    BatchWriteSpansRequest:
+    ListTracesResponse:
       type: object
       properties:
-        spans:
+        traces:
           type: array
           items:
-            $ref: '#/components/schemas/Span'
-      required:
-      - spans
+            $ref: '#/components/schemas/Trace'
+        nextPageToken:
+          type: string
     Span:
       type: object
       description: A span represents a single operation within a trace.
@@ -219,6 +219,22 @@ components:
           type: boolean
         childSpanCount:
           type: integer
+    BatchWriteSpansRequest:
+      type: object
+      properties:
+        spans:
+          type: array
+          items:
+            $ref: '#/components/schemas/Span'
+      required:
+      - spans
+    Traces:
+      type: object
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
     Trace:
       type: object
       description: A trace describes the latency of a request through a system.
@@ -248,22 +264,6 @@ components:
                 type: object
                 additionalProperties:
                   type: string
-    Traces:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
-    ListTracesResponse:
-      type: object
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Trace'
-        nextPageToken:
-          type: string
 externalDocs:
   description: Google Cloud Trace Documentation
   url: https://cloud.google.com/trace/docs
